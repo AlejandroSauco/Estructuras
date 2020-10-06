@@ -1,0 +1,74 @@
+#include <iostream>
+using namespace std;
+
+struct box {
+   char nombre;
+   char apellido;
+   String fecha;
+   int numExpd;
+   box *sgt;
+};
+box *i,*f=NULL;
+box *a;
+
+void eQ(char nombre, char apellido, String fecha, int numExpd){
+    if(f==NULL){
+        box *cbox=new box;
+        cbox->nombre="Alejandro";
+        cbox->apellido="Sauco";
+        cbox->fecha=26/02/200;
+        cbox->numExpd=21954067;
+        cbox->sgt=NULL;
+        f=cbox;i=f;
+    }else{
+        box *cbox= new box;
+        f->sgt=cbox;
+        cbox->sgt=NULL;
+        f=cbox;
+    }
+}
+void dQ(){
+    if(i==NULL)
+        cout<<"Queue vacia";
+    else if (i->sgt==NULL){
+        cout<<"Eliminando";
+        i=i->sgt;
+        i=NULL;
+
+    }else {
+        cout << "Eliminando";
+        i = i->sgt;
+    }
+}
+
+void prt() {
+    cbox = i;
+    if (i == NULL)
+        cout << "Vacia nada que imprimir";
+    else
+        while (cbox != NULL)
+            cout << a->v << " -> ", cbox = cbox->sgt;
+}
+int main(){
+    int op, x;
+    do{
+        cout<<"\n(1) Push    (2) Pop    (3) Print   (4) Salir \n ";
+        cout<<"\n Elija ppcion  ?: ",cin>>op;
+        switch (op){
+            case 1:
+                cout<<"Ingresa el valor a insertar en el Stack : ??  ",cin>>x;
+                eQ(x);
+                break;
+            case 2:
+                cout<<"Eliminando ..... : ";
+                dQ();
+                break;
+            case 3:
+                cout<<"Imprimiendo..... : ";
+                prt();
+                break;
+            case 4:
+                cout<<"------Bye--------";
+        }
+    }while(op!=4);
+}
